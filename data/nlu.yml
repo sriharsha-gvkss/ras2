@@ -1,0 +1,474 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - I'm sad
+    - I am sad
+    - I am unhappy
+    - I have not felt very well
+    - I feel bad
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: create_timesheet
+  examples: |
+    - create a timesheet
+    - I want to create a timesheet
+    - add a timesheet
+    - log my hours
+    - record my work hours
+    - create timesheet for today
+    - add timesheet entry
+    - log work time
+    - create a new timesheet
+    - I worked today
+    - I need to log my hours
+    - create timesheet entry for [today](date)
+    - add timesheet for [yesterday](date)
+    - log hours from [9am](from_time) to [5pm](to_time)
+    - create timesheet with [8 hours](total_hours) of work
+    - I worked [6 hours](total_hours) today
+    - timesheet for [Monday](date)
+    - log [4 hours](total_hours) of [coding](task_summary)
+    - create timesheet entry for [project work](task_summary)
+    - log hours from [8:30am](from_time) to [6:30pm](to_time)
+    - create timesheet from [10:00](from_time) to [18:00](to_time)
+    - work hours from [9:15](from_time) to [17:45](to_time)
+    - timesheet entry from [8am](from_time) to [4pm](to_time)
+    - timesheet for [today](date)
+    - log my work hours for [today](date)
+    - record my time for [today](date)
+    - add my work hours for [today](date)
+    - create timesheet entry for [today](date)
+    - log hours worked [today](date)
+    - record work time for [today](date)
+    - add timesheet for [today](date)
+    - create work log for [today](date)
+    - log my time for [today](date)
+
+- intent: list_timesheets
+  examples: |
+    - show my timesheets
+    - list timesheets
+    - view timesheets
+    - get my timesheets
+    - show all timesheets
+    - display timesheets
+    - timesheet history
+    - my timesheet entries
+    - show timesheet records
+    - list all timesheets
+    - view my timesheet history
+    - get timesheet list
+    - show my timesheet entries
+
+- intent: submit_timesheets
+  examples: |
+    - submit my timesheets
+    - submit pending timesheets
+    - send timesheets for approval
+    - submit all timesheets
+    - send pending timesheets
+    - approve my timesheets
+    - submit timesheet entries
+    - send timesheets to manager
+    - submit for approval
+    - send timesheets for review
+    - approve timesheet entries
+    - submit all pending timesheets
+
+- intent: get_pending_timesheets
+  examples: |
+    - show pending timesheets
+    - list pending timesheets
+    - get pending timesheets
+    - view pending timesheets
+    - show unsubmitted timesheets
+    - list unsubmitted timesheets
+    - pending timesheet entries
+    - unsubmitted timesheets
+    - show timesheets that need approval
+    - list timesheets pending approval
+
+- intent: create_leave
+  examples: |
+    - request leave
+    - apply for leave
+    - create leave request
+    - I want to take leave
+    - submit leave application
+    - request time off
+    - apply for time off
+    - create leave application
+    - I need leave
+    - submit leave request
+    - request vacation
+    - apply for vacation
+    - create leave for [tomorrow](date)
+    - request [sick leave](leave_type)
+    - apply for [personal leave](leave_type)
+    - request [annual leave](leave_type)
+    - leave request for [next week](date)
+    - I need [medical leave](leave_type)
+    - apply for [maternity leave](leave_type)
+    - request leave due to [illness](reason)
+    - leave request for [family emergency](reason)
+
+- intent: list_leaves
+  examples: |
+    - show my leave requests
+    - list leave requests
+    - view leave applications
+    - get my leaves
+    - show leave history
+    - display leave requests
+    - my leave applications
+    - list all leaves
+    - view leave records
+    - show my leave history
+    - get leave history
+    - display all leaves
+
+- intent: create_email
+  examples: |
+    - create an email
+    - compose email
+    - write an email
+    - draft an email
+    - send an email
+    - create email to [manager](recipient)
+    - compose email to [team](recipient)
+    - write email to [client](recipient)
+    - draft email about [project update](subject)
+    - create email with subject [meeting request](subject)
+    - compose email regarding [budget approval](subject)
+    - write email for [status update](subject)
+    - draft email to [john@company.com](recipient)
+    - create email about [deadline extension](subject)
+    - compose email with content [please review the attached document](content)
+    - write email with message [I need your approval](content)
+    - recipient email [harsha@gmail.com](recipient)
+    - subject [offer letter](subject)
+    - message content [isuddhfiuskfds](content)
+    - recipient email [john@example.com](recipient) subject [meeting request](subject) message content [please join the meeting](content)
+    - recipient [manager@company.com](recipient) subject [project update](subject) content [here is the latest update](content)
+    - I want to send an email
+    - I need to send an email
+    - I want to compose an email
+    - I need to write an email
+    - I want to draft an email
+    - I need to create an email
+    - I want to send email to [manager](recipient)
+    - I need to compose email to [team](recipient)
+    - I want to write email to [client](recipient)
+    - I need to draft email about [project update](subject)
+    - I want to create email with subject [meeting request](subject)
+    - I need to compose email regarding [budget approval](subject)
+    - I want to write email for [status update](subject)
+    - I need to draft email to [john@company.com](recipient)
+    - I want to create email about [deadline extension](subject)
+    - I need to compose email with content [please review the attached document](content)
+    - I want to write email with message [I need your approval](content)
+    - I need to send email to [harsha@gmail.com](recipient)
+    - I want to create email with subject [offer letter](subject)
+    - I need to write email with content [isuddhfiuskfds](content)
+    - I want to send email to [john@example.com](recipient) with subject [meeting request](subject) and content [please join the meeting](content)
+    - I need to create email to [manager@company.com](recipient) with subject [project update](subject) and content [here is the latest update](content)
+    - email to [manager](recipient)
+    - send email to [manager](recipient)
+    - compose email to [manager](recipient)
+    - write email to [manager](recipient)
+    - draft email to [manager](recipient)
+    - create email to [manager](recipient)
+    - send an email to [manager](recipient)
+    - compose an email to [manager](recipient)
+    - write an email to [manager](recipient)
+    - draft an email to [manager](recipient)
+    - create an email to [manager](recipient)
+
+- intent: list_emails
+  examples: |
+    - show my emails
+    - list emails
+    - view emails
+    - get my emails
+    - show email history
+    - display emails
+    - my email list
+    - list all emails
+    - view email records
+    - show my email history
+    - get email history
+    - display all emails
+    - show email drafts
+
+- intent: get_email_context
+  examples: |
+    - show email context
+    - get email details
+    - view email content
+    - show email information
+    - get email context for [email 1](email_id)
+    - view email [2](email_id)
+    - show details of email [3](email_id)
+    - get context for email [1](email_id)
+    - view email content for [email 4](email_id)
+
+- intent: create_task
+  examples: |
+    - create a task
+    - add a task
+    - create new task
+    - add task to list
+    - create task [review documents](title)
+    - add task [prepare presentation](title)
+    - create task with description [complete project report](description)
+    - add [high priority](priority) task
+    - create [urgent](priority) task
+    - add task [call client](title) with [medium](priority) priority
+    - create task [update website](title) with description [update company website content](description)
+    - add [low priority](priority) task [organize files](title)
+    - create task [meeting preparation](title) for [tomorrow](date)
+
+- intent: list_tasks
+  examples: |
+    - show my tasks
+    - list tasks
+    - view tasks
+    - get my tasks
+    - show task list
+    - display tasks
+    - my task list
+    - list all tasks
+    - view task records
+    - show my task list
+    - get task history
+    - display all tasks
+    - show pending tasks
+
+- intent: admin_get_all_data
+  examples: |
+    - show all data
+    - get all data
+    - admin dashboard
+    - show dashboard
+    - get dashboard
+    - show all records
+    - get all records
+    - admin overview
+    - show overview
+    - get overview
+    - show summary
+    - get summary
+    - admin report
+    - show report
+    - get report
+    - show all information
+    - get all information
+    - admin data
+    - show admin data
+    - get admin data
+
+- intent: admin_approve_timesheet
+  examples: |
+    - approve timesheet
+    - approve timesheet [1](timesheet_id)
+    - approve timesheet [2](timesheet_id)
+    - approve timesheet [3](timesheet_id)
+    - approve timesheet by [manager](approver)
+    - approve timesheet [1](timesheet_id) by [admin](approver)
+    - approve timesheet [2](timesheet_id) by [supervisor](approver)
+    - approve timesheet [3](timesheet_id) by [manager](approver)
+    - approve timesheet entry
+    - approve timesheet entry [1](timesheet_id)
+    - approve timesheet entry [2](timesheet_id)
+    - approve timesheet entry [3](timesheet_id)
+    - approve timesheet entry by [manager](approver)
+    - approve timesheet entry [1](timesheet_id) by [admin](approver)
+    - approve timesheet entry [2](timesheet_id) by [supervisor](approver)
+    - approve timesheet entry [3](timesheet_id) by [manager](approver)
+
+- intent: admin_get_detailed_timesheets
+  examples: |
+    - show detailed timesheets
+    - get detailed timesheets
+    - show timesheet details
+    - get timesheet details
+    - show timesheet report
+    - get timesheet report
+    - show timesheet analysis
+    - get timesheet analysis
+    - show timesheet breakdown
+    - get timesheet breakdown
+    - show timesheet summary
+    - get timesheet summary
+    - show timesheet overview
+    - get timesheet overview
+    - show timesheet information
+    - get timesheet information
+    - admin timesheet report
+    - admin timesheet analysis
+
+- intent: admin_get_detailed_leaves
+  examples: |
+    - show detailed leaves
+    - get detailed leaves
+    - show leave details
+    - get leave details
+    - show leave report
+    - get leave report
+    - show leave analysis
+    - get leave analysis
+    - show leave breakdown
+    - get leave breakdown
+    - show leave summary
+    - get leave summary
+    - show leave overview
+    - get leave overview
+    - show leave information
+    - get leave information
+    - admin leave report
+    - admin leave analysis
+
+- intent: admin_get_detailed_emails
+  examples: |
+    - show detailed emails
+    - get detailed emails
+    - show email details
+    - get email details
+    - show email report
+    - get email report
+    - show email analysis
+    - get email analysis
+    - show email breakdown
+    - get email breakdown
+    - show email summary
+    - get email summary
+    - show email overview
+    - get email overview
+    - show email information
+    - get email information
+    - admin email report
+    - admin email analysis
+
+- intent: admin_get_detailed_tasks
+  examples: |
+    - show detailed tasks
+    - get detailed tasks
+    - show task details
+    - get task details
+    - show task report
+    - get task report
+    - show task analysis
+    - get task analysis
+    - show task breakdown
+    - get task breakdown
+    - show task summary
+    - get task summary
+    - show task overview
+    - get task overview
+    - show task information
+    - get task information
+    - admin task report
+    - admin task analysis
+
+- intent: help
+  examples: |
+    - help
+    - I need help
+    - can you help me
+    - what can you do
+    - how can you help
+    - show me what you can do
+    - what are your features
+    - help me
+    - I need assistance
+    - what can I ask you
+    - show available options
+    - what services do you provide
+
+- intent: fallback
+  examples: |
+    - I don't understand
+    - what do you mean
+    - I'm confused
+    - can you explain
+    - I don't get it
+    - what are you talking about
+    - I'm not sure what you mean
+    - can you clarify
+    - I don't follow
+    - what does that mean

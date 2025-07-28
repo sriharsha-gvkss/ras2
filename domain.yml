@@ -1,0 +1,185 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - create_timesheet
+  - list_timesheets
+  - submit_timesheets
+  - get_pending_timesheets
+  - create_leave
+  - list_leaves
+  - create_email
+  - list_emails
+  - get_email_context
+  - create_task
+  - list_tasks
+  - help
+  - fallback
+  - admin_get_all_data
+  - admin_approve_timesheet
+  - admin_get_detailed_timesheets
+  - admin_get_detailed_leaves
+  - admin_get_detailed_emails
+  - admin_get_detailed_tasks
+
+entities:
+  - user_id
+  - email
+  - date
+  - from_time
+  - to_time
+  - total_hours
+  - task_summary
+  - leave_type
+  - reason
+  - recipient
+  - subject
+  - content
+  - title
+  - description
+  - priority
+  - approver
+  - email_id
+  - timesheet_id
+
+slots:
+  user_id:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: user_id
+  email:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: email
+  date:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: date
+  from_time:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: from_time
+  to_time:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: to_time
+  total_hours:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: total_hours
+  task_summary:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: task_summary
+  leave_type:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: leave_type
+  reason:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: reason
+  recipient:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: recipient
+  subject:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: subject
+  content:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: content
+  title:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: title
+  description:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: description
+  priority:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: priority
+  approver:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: approver
+  email_id:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: email_id
+  timesheet_id:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: timesheet_id
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+actions:
+  - action_create_timesheet
+  - action_collect_timesheet_info
+  - action_list_timesheets
+  - action_submit_pending_timesheets
+  - action_get_pending_timesheets
+  - action_create_leave
+  - action_collect_leave_info
+  - action_list_leaves
+  - action_create_email
+  - action_collect_email_info
+  - action_list_emails
+  - action_get_email_context
+  - action_create_task
+  - action_collect_task_info
+  - action_list_tasks
+  - action_default_fallback
+  - action_get_all_data
+  - action_approve_timesheet
+  - action_get_detailed_timesheets
+  - action_get_detailed_leaves
+  - action_get_detailed_emails
+  - action_get_detailed_tasks
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

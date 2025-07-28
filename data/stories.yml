@@ -1,0 +1,223 @@
+version: "3.1"
+
+stories:
+
+- story: timesheet creation flow
+  steps:
+  - intent: create_timesheet
+  - action: action_collect_timesheet_info
+  - action: action_create_timesheet
+
+- story: list timesheets flow
+  steps:
+  - intent: list_timesheets
+  - action: action_list_timesheets
+
+- story: submit timesheets flow
+  steps:
+  - intent: submit_timesheets
+  - action: action_submit_pending_timesheets
+
+- story: get pending timesheets flow
+  steps:
+  - intent: get_pending_timesheets
+  - action: action_get_pending_timesheets
+
+- story: leave creation flow
+  steps:
+  - intent: create_leave
+  - action: action_collect_leave_info
+  - action: action_create_leave
+
+- story: list leaves flow
+  steps:
+  - intent: list_leaves
+  - action: action_list_leaves
+
+- story: email creation flow
+  steps:
+  - intent: create_email
+  - action: action_collect_email_info
+  - action: action_create_email
+
+- story: list emails flow
+  steps:
+  - intent: list_emails
+  - action: action_list_emails
+
+- story: get email context flow
+  steps:
+  - intent: get_email_context
+  - action: action_get_email_context
+
+- story: task creation flow
+  steps:
+  - intent: create_task
+  - action: action_collect_task_info
+  - action: action_create_task
+
+- story: list tasks flow
+  steps:
+  - intent: list_tasks
+  - action: action_list_tasks
+
+- story: admin get all data flow
+  steps:
+  - intent: admin_get_all_data
+  - action: action_get_all_data
+
+- story: admin approve timesheet flow
+  steps:
+  - intent: admin_approve_timesheet
+  - action: action_approve_timesheet
+
+- story: admin get detailed timesheets flow
+  steps:
+  - intent: admin_get_detailed_timesheets
+  - action: action_get_detailed_timesheets
+
+- story: admin get detailed leaves flow
+  steps:
+  - intent: admin_get_detailed_leaves
+  - action: action_get_detailed_leaves
+
+- story: admin get detailed emails flow
+  steps:
+  - intent: admin_get_detailed_emails
+  - action: action_get_detailed_emails
+
+- story: admin get detailed tasks flow
+  steps:
+  - intent: admin_get_detailed_tasks
+  - action: action_get_detailed_tasks
+
+- story: help flow
+  steps:
+  - intent: help
+  - action: action_default_fallback
+
+- story: fallback flow
+  steps:
+  - intent: fallback
+  - action: action_default_fallback
+
+- story: greet flow
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: goodbye flow
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: mood great flow
+  steps:
+  - intent: mood_great
+  - action: utter_happy
+
+- story: mood unhappy flow
+  steps:
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: mood unhappy flow 2
+  steps:
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: create_timesheet
+  - action: action_collect_timesheet_info
+  - action: action_create_timesheet
+  - intent: list_timesheets
+  - action: action_list_timesheets
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: create_leave
+  - action: action_collect_leave_info
+  - action: action_create_leave
+  - intent: list_leaves
+  - action: action_list_leaves
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_3
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: create_email
+  - action: action_collect_email_info
+  - action: action_create_email
+  - intent: list_emails
+  - action: action_list_emails
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_4
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: create_task
+  - action: action_collect_task_info
+  - action: action_create_task
+  - intent: list_tasks
+  - action: action_list_tasks
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: admin workflow
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: admin_get_all_data
+  - action: action_get_all_data
+  - intent: admin_get_detailed_timesheets
+  - action: action_get_detailed_timesheets
+  - intent: admin_approve_timesheet
+  - action: action_approve_timesheet
+  - intent: admin_get_detailed_leaves
+  - action: action_get_detailed_leaves
+  - intent: admin_get_detailed_emails
+  - action: action_get_detailed_emails
+  - intent: admin_get_detailed_tasks
+  - action: action_get_detailed_tasks
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: comprehensive workflow
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help
+  - action: action_default_fallback
+  - intent: create_timesheet
+  - action: action_collect_timesheet_info
+  - action: action_create_timesheet
+  - intent: submit_timesheets
+  - action: action_submit_pending_timesheets
+  - intent: create_leave
+  - action: action_collect_leave_info
+  - action: action_create_leave
+  - intent: create_email
+  - action: action_collect_email_info
+  - action: action_create_email
+  - intent: create_task
+  - action: action_collect_task_info
+  - action: action_create_task
+  - intent: goodbye
+  - action: utter_goodbye
