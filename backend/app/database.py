@@ -9,7 +9,7 @@ load_dotenv()
 
 # Use PostgreSQL with dialogiq_db database
 # The DATABASE_URL will be loaded from .env file or use default
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:243090@localhost/dialogiq_db")
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:gvkss@123@localhost:5432/dialogiq_db")
 
 # Create engine with appropriate configuration
 if DATABASE_URL.startswith("sqlite"):

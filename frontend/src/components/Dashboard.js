@@ -159,6 +159,43 @@ const Dashboard = ({ onLogout, userRole }) => {
     }
   ];
 
+  const [timesheetForm, setTimesheetForm] = useState({
+    user_id: '',
+    email: '',
+    date: '',
+    from_time: '',
+    to_time: '',
+    task_summary: '',
+    hours: '',
+    description: '',
+  });
+  const [tsMessage, setTsMessage] = useState('');
+  const handleTimesheetChange = (e) => {
+    setTimesheetForm({ ...timesheetForm, [e.target.name]: e.target.value });
+  };
+  const handleTimesheetSubmit = async (e) => {
+    e.preventDefault();
+    setTsMessage('');
+    try {
+      const payload = {
+        ...timesheetForm,
+        hours: Number(timesheetForm.hours),
+        date: timesheetForm.date, // YYYY-MM-DD
+        from_time: timesheetForm.from_time, // HH:MM:SS
+        to_time: timesheetForm.to_time, // HH:MM:SS
+        submitted: false,
+        approved_by: null
+      };
+      await axios.post('http://localhost:8000/timesheets/', payload);
+      setTsMessage('Timesheet created successfully!');
+      setTimesheetForm({
+        user_id: '', email: '', date: '', from_time: '', to_time: '', task_summary: '', hours: '', description: ''
+      });
+    } catch (error) {
+      setTsMessage('Error creating timesheet. Please check your input.');
+    }
+  };
+
   return (
     <Box sx={{ flexGrow: 1, height: '100vh', display: 'flex', flexDirection: 'column' }}>
       <AppBar 
@@ -265,6 +302,26 @@ const Dashboard = ({ onLogout, userRole }) => {
                       }}
                     />
                   ))}
+                </Box>
+                {/* Timesheet Creation Form */}
+                <Box sx={{ mt: 4 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2 }}>
+                    Create Timesheet
+                  </Typography>
+                  <form onSubmit={handleTimesheetSubmit}>
+                    <Grid container spacing={1}>
+                      <Grid item xs={12}><TextField label="User ID" name="user_id" value={timesheetForm.user_id} onChange={handleTimesheetChange} fullWidth required /></Grid>
+                      <Grid item xs={12}><TextField label="Email" name="email" value={timesheetForm.email} onChange={handleTimesheetChange} fullWidth required /></Grid>
+                      <Grid item xs={12}><TextField label="Date" name="date" type="date" value={timesheetForm.date} onChange={handleTimesheetChange} fullWidth required InputLabelProps={{ shrink: true }} /></Grid>
+                      <Grid item xs={6}><TextField label="From Time" name="from_time" type="time" value={timesheetForm.from_time} onChange={handleTimesheetChange} fullWidth required InputLabelProps={{ shrink: true }} /></Grid>
+                      <Grid item xs={6}><TextField label="To Time" name="to_time" type="time" value={timesheetForm.to_time} onChange={handleTimesheetChange} fullWidth required InputLabelProps={{ shrink: true }} /></Grid>
+                      <Grid item xs={12}><TextField label="Task Summary" name="task_summary" value={timesheetForm.task_summary} onChange={handleTimesheetChange} fullWidth required /></Grid>
+                      <Grid item xs={6}><TextField label="Hours" name="hours" type="number" value={timesheetForm.hours} onChange={handleTimesheetChange} fullWidth required /></Grid>
+                      <Grid item xs={12}><TextField label="Description" name="description" value={timesheetForm.description} onChange={handleTimesheetChange} fullWidth multiline rows={2} /></Grid>
+                      <Grid item xs={12}><Button type="submit" variant="contained" color="primary" fullWidth>Create Timesheet</Button></Grid>
+                      {tsMessage && <Grid item xs={12}><Typography color={tsMessage.includes('success') ? 'green' : 'red'}>{tsMessage}</Typography></Grid>}
+                    </Grid>
+                  </form>
                 </Box>
               </CardContent>
             </Card>
